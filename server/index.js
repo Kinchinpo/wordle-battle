@@ -20,7 +20,7 @@ try {
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:5173", methods: ["GET", "POST"] },
+  cors: { origin: "*", methods: ["GET", "POST"] },
 });
 
 const rooms = {};
@@ -165,6 +165,7 @@ io.on("connection", (socket) => {
   // ĐÃ XÓA: socket.on("request_full_rematch") vì không dùng nữa
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING ON PORT 3001");
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, () => {
+  console.log(`SERVER RUNNING ON PORT ${PORT}`);
 });
