@@ -68,8 +68,8 @@ function GameOverModal({
                   `}
                 >
                   {isWaiting 
-                    ? "Đang chờ đối thủ..." 
-                    : (gameMode === "SINGLE" ? "CHƠI LẠI TỪ ĐẦU ↻" : "VÒNG TIẾP THEO ➝")
+                    ? "Waiting for opponent..." 
+                    : (gameMode === "SINGLE" ? "RESTART GAME ↻" : "CONTINUE ➝")
                   }
                 </button>
             )}
