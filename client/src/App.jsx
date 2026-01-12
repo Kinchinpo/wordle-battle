@@ -350,11 +350,11 @@ function App() {
          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 animate-fade-in">
             <div className="bg-gray-800 p-6 rounded-xl w-80 border border-gray-600">
                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-[#ffd1dc]">CÀI ĐẶT PHÒNG</h3>
+                  <h3 className="text-xl font-bold text-[#ffd1dc]">ROOM SETTINGS</h3>
                   <button onClick={() => setShowSettings(false)}><FaXmark className="text-xl text-gray-400"/></button>
                </div>
                <div className="mb-6">
-                  <label className="block text-gray-300 mb-2 font-bold">Số vòng chơi (1-10):</label>
+                  <label className="block text-gray-300 mb-2 font-bold">Number of rounds (1-10):</label>
                   <div className="flex items-center gap-4">
                      <input 
                         type="range" min="1" max="10" 
@@ -366,7 +366,7 @@ function App() {
                   </div>
                </div>
                <button onClick={() => setShowSettings(false)} className="w-full bg-[#ffd1dc] text-gray-900 font-bold py-2 rounded-lg">
-                  LƯU CÀI ĐẶT
+                  SAVE SETTINGS
                </button>
             </div>
          </div>
@@ -410,11 +410,11 @@ function App() {
 
              <input 
                 className="w-full p-4 mb-6 text-xl text-center text-black font-bold rounded-lg focus:outline-none focus:ring-4 focus:ring-[#C1D5F0]" 
-                placeholder="Nhập ID Phòng..." 
+                placeholder="Enter Room ID..." 
                 onChange={(e) => setRoom(e.target.value)} 
              />
              <button onClick={joinVersusRoom} className="w-full bg-[#C1D5F0] hover:bg-[#a0bce0] text-gray-900 text-xl font-bold py-4 rounded-lg">
-               VÀO PHÒNG ({maxRounds} Rounds)
+               JOIN ROOM ({maxRounds} Rounds)
              </button>
           </div>
         </div>
@@ -424,10 +424,10 @@ function App() {
       {view === "WAITING" && (
         <div className="flex flex-col items-center justify-center h-full w-full px-4 bg-gray-900">
            <div className="animate-spin text-6xl mb-6">⏳</div>
-           <h2 className="text-2xl font-bold text-[#ffd1dc] mb-2">ĐANG TÌM ĐỐI THỦ...</h2>
-           <p className="text-gray-400 mb-8">ID Phòng: <span className="text-white font-bold">{room}</span></p>
+           <h2 className="text-2xl font-bold text-[#ffd1dc] mb-2">WAITING FOR OPPONENT...</h2>
+           <p className="text-gray-400 mb-8">Room ID: <span className="text-white font-bold">{room}</span></p>
            <button onClick={exitToMenu} className="mt-12 px-6 py-2 border border-red-500 text-red-400 rounded hover:bg-red-500/10">
-              Hủy bỏ
+              Cancel
            </button>
         </div>
       )}
