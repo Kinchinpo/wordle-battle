@@ -8,7 +8,7 @@ import MiniBoard from './components/MiniBoard';
 import GameOverModal from './components/GameOverModal';
 import validWordsRaw from './valid_words.txt?raw';
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://vixinh-server.onrender.com");
 
 // Xử lý từ điển
 const validWordsSet = new Set(
