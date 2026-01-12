@@ -165,6 +165,7 @@ io.on("connection", (socket) => {
   // ĐÃ XÓA: socket.on("request_full_rematch") vì không dùng nữa
 });
 
+// const PORT = process.env.PORT || 3001;
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`SERVER RUNNING ON PORT ${PORT}`);
