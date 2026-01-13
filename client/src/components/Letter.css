@@ -1,0 +1,141 @@
+/* client/src/components/Letter.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap');
+
+/* --- CONTAINER PHONG BÌ (ICON) --- */
+.letter-wrapper {
+    position: absolute;
+    /* Đặt lệch sang góc phải dưới để không che hoa */
+    bottom: 15%; 
+    right: 10%; 
+    left: auto; /* Bỏ căn trái */
+    transform: none; /* Bỏ căn giữa */
+    
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.letter-wrapper:hover {
+    transform: scale(1.1) rotate(-5deg); /* Hiệu ứng lắc nhẹ khi hover */
+}
+
+/* --- SVG ENVELOPE STYLES --- */
+.envelope-svg {
+    width: 150px; /* Nhỏ lại chút cho tinh tế */
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    animation: floatEnvelope 3s ease-in-out infinite;
+}
+
+.click-hint {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+    text-shadow: 0 0 10px black;
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    animation: fadeIn 2s infinite alternate;
+}
+
+/* --- MODAL HIỂN THỊ NỘI DUNG THƯ --- */
+.letter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* Nền tối hơn chút để tập trung đọc thư */
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    
+    /* --- CĂN GIỮA MÀN HÌNH (BÌNH THƯỜNG) --- */
+    justify-content: center; 
+    padding-right: 0;
+    
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+.letter-content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    min-height: 300px;
+    background: #fff9f0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    transform: scale(0.8);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    background-image: linear-gradient(#eee .1rem, transparent .1rem);
+    background-size: 100% 2rem;
+    line-height: 2rem;
+}
+
+.letter-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 26px;
+    color: #555;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.close-letter-btn {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.close-letter-btn:hover {
+    background: #ff5e6c;
+    border-color: #ff5e6c;
+}
+
+/* --- ANIMATION TRÁI TIM BAY --- */
+.floating-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff5e6c;
+    animation: flyUp 4s linear infinite;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Keyframes */
+@keyframes floatEnvelope {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    to { transform: scale(1); }
+}
+
+@keyframes flyUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
+}

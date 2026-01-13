@@ -1,0 +1,93 @@
+/* client/src/components/SpecialMessage.css */
+.message-container {
+    position: fixed;
+    inset: 0;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9990;
+}
+
+/* Container chính: Dùng width theo % màn hình để Responsive */
+.words-container {
+    position: relative;
+    width: 90vw;  /* Chiếm 90% chiều rộng màn hình điện thoại */
+    height: 72vw; /* Tỷ lệ chiều cao tương ứng */
+    max-width: 450px; /* Không quá to trên máy tính */
+    max-height: 360px;
+}
+
+.char-box {
+    position: absolute; /* Luôn luôn là absolute để bay lượn tự do */
+    width: 16%;  /* Kích thước tương đối theo container */
+    height: 20%;
+    
+    border: 2px solid #333;
+    border-radius: 12px; /* Bo góc tròn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Responsive Font size dùng container queries hoặc vmin */
+    font-size: clamp(16px, 5vw, 32px); 
+    font-weight: 800;
+    color: #555;
+    background-color: #1a1a1a;
+    
+    /* Transition mượt cho vị trí (left, top) và màu sắc */
+    transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1;
+}
+
+/* --- TRẠNG THÁI TÔ HỒNG --- */
+.char-box.highlight {
+    background-color: #ffd1dc;
+    border-color: #ffd1dc;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 209, 220, 0.5);
+    z-index: 20; /* Nổi lên trên */
+    transform: scale(1.1);
+}
+
+/* --- TRẠNG THÁI MỜ ĐI --- */
+.char-box.faded {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+/* --- NÚT CONTINUE --- */
+.continue-btn {
+    margin-top: 10vh; /* Cách xa chữ một chút */
+    padding: 12px 40px;
+    font-size: clamp(16px, 4vw, 22px); /* Chữ nút cũng responsive */
+    font-weight: bold;
+    color: #000;
+    background-color: #ffd1dc;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 209, 220, 0.4);
+    
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards, pulseBtn 2s infinite;
+    z-index: 100;
+    outline: none;
+}
+
+.continue-btn:hover {
+    background-color: #ffb7c5;
+}
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseBtn {
+    0% { box-shadow: 0 0 0 0 rgba(255, 209, 220, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 209, 220, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 209, 220, 0); }
+}
